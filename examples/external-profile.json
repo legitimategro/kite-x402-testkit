@@ -1,0 +1,19 @@
+{
+  "target": "http://127.0.0.1:4407/v1/jobs",
+  "input": {
+    "operation_id": "unsigned-contract-probe",
+    "spec_version": "text-index-v1",
+    "documents": [
+      {
+        "id": "one",
+        "text": "Unsigned contract probe."
+      }
+    ]
+  },
+  "payment": {
+    "network": "eip155:2368",
+    "asset": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "payTo": "0xcccccccccccccccccccccccccccccccccccccccc",
+    "amount": "10000"
+  }
+}

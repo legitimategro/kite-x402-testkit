@@ -2,11 +2,11 @@
 
 Deterministic seller fault injection and evidence reports.
 
-Version 0.1.0 is an AI-assisted engineering evaluation release, developed under one operator and assigned to this GitHub account. It is not evidence of independent human adoption, official Kite approval, Electric Capital inclusion or successful live payment.
+Version 0.2.0 is an AI-assisted engineering evaluation release, developed under one operator and assigned to this GitHub account. It is not evidence of independent human adoption, official Kite approval, Electric Capital inclusion or successful live payment.
 
 ## Run and verify
 
-Node.js 20.11+ is required.
+Node.js 20.11+ is required; Node.js 24 is used for current CI and is recommended.
 
 ```sh
 npm ci
@@ -33,3 +33,9 @@ Read [compatibility.json](compatibility.json) and [the protocol boundary](docs/P
 ## Scope and evidence
 
 [Original PRD](docs/PRD.md) describes the full target, not a claim that every external acceptance gate has passed. [Event contract](docs/EVENTS.md) defines the application records. The standalone repositories share protocol/storage support code, with distinct business implementations and tests. The license is MIT; third-party dependencies keep their upstream licenses. Reproduce failures without publishing payment signatures, account credentials or private files.
+
+## 2026-10-28 update
+
+The external profile probes an independent HTTP endpoint, without importing its implementation: node src/main.mjs --profile external --config examples/external-profile.json. Configure target, input and payment (network, asset, payTo, amount in base units). The profile sends an unsigned request, intentionally malformed payment bytes, then another unsigned request. It checks the actual quote, rejection and stability. No valid proof is generated or payment sent. It reports external_http_unsigned / E1 and never increments live_pass. Use the same probe against the .NET example and the Node sellers. Offline fault ordering tests remain a separate profile; funded Passport and SIWX are still unverified.
+
+See [Kite integration and interoperability boundaries](docs/KITE-INTEGRATION.md) and [this release's changes](CHANGELOG.md).

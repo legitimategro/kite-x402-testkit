@@ -242,7 +242,9 @@ export function junit(report) {
 }
 export function html(report) {
   return (
-    '<!doctype html><meta charset="utf-8"><title>x402 Fault Lab</title><style>body{font:17px system-ui;max-width:1000px;margin:50px auto;background:#101820;color:#eff7fb}td,th{padding:12px;border-bottom:1px solid #456}code{color:#76dfbc}</style><h1>x402 Fault Lab</h1><p>Offline evidence · no actual spend · no official certification</p><table><tr><th>Case</th><th>Result</th><th>Observed order</th></tr>' +
+    '<!doctype html><meta charset="utf-8"><title>x402 Fault Lab</title><style>body{font:17px system-ui;max-width:1000px;margin:50px auto;background:#101820;color:#eff7fb}td,th{padding:12px;border-bottom:1px solid #456}code{color:#76dfbc}</style><h1>x402 Fault Lab</h1><p>' +
+    escape(report.profile || "offline") +
+    " evidence · no actual spend · no official certification</p><table><tr><th>Case</th><th>Result</th><th>Observed order</th></tr>" +
     report.cases
       .map(
         (c) =>
